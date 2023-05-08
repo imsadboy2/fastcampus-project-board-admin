@@ -23,16 +23,15 @@ class ArticleManagementControllerTest {
         this.mvc = mvc;
     }
 
-    @DisplayName("[view] [GET] 게시글 관리 페이지 - 정상 호춣")
+    @DisplayName("[view][GET] 게시글 관리 페이지 - 정상 호출")
     @Test
-    void givenNothing_whenArticleManagementView_thenReturnsArticleManagementView() throws Exception {
+    void givenNothing_whenRequestingArticleManagementView_thenReturnsArticleManagementView() throws Exception {
         // Given
 
-        // When&Then
+        // When & Then
         mvc.perform(get("/management/articles"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
-                .andExpect(view().name("/management/articles"));
-
+                .andExpect(view().name("management/articles"));
     }
 }
