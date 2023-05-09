@@ -31,6 +31,7 @@ public class UserAccount extends AuditingFields {
     @Column(nullable = false)
     private Set<RoleType> roleTypes = new LinkedHashSet<>();
 
+
     @Setter @Column(length = 100) private String email;
     @Setter @Column(length = 100) private String nickname;
     @Setter private String memo;
@@ -61,8 +62,8 @@ public class UserAccount extends AuditingFields {
         this.getRoleTypes().add(roleType);
     }
 
-    public void addRoleTypes(Collection<RoleType> roleType) {
-        this.getRoleTypes().addAll(roleType);
+    public void addRoleTypes(Collection<RoleType> roleTypes) {
+        this.getRoleTypes().addAll(roleTypes);
     }
 
     public void removeRoleType(RoleType roleType) {
