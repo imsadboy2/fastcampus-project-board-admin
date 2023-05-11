@@ -1,8 +1,7 @@
 package com.fastcampus.projectboardadmin.dto.security;
 
 import com.fastcampus.projectboardadmin.domain.constant.RoleType;
-import com.fastcampus.projectboardadmin.dto.UserAccountDto;
-import lombok.Getter;
+import com.fastcampus.projectboardadmin.dto.AdminAccountDto;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,7 +27,6 @@ public record BoardAdminPrincipal(
     }
 
     public static BoardAdminPrincipal of(String username, String password, Set<RoleType> roleTypes, String email, String nickname, String memo, Map<String, Object> oAuth2Attributes) {
-
         return new BoardAdminPrincipal(
                 username,
                 password,
@@ -44,7 +42,7 @@ public record BoardAdminPrincipal(
         );
     }
 
-    public static BoardAdminPrincipal from(UserAccountDto dto) {
+    public static BoardAdminPrincipal from(AdminAccountDto dto) {
         return BoardAdminPrincipal.of(
                 dto.userId(),
                 dto.userPassword(),
@@ -55,8 +53,8 @@ public record BoardAdminPrincipal(
         );
     }
 
-    public UserAccountDto toDto() {
-        return UserAccountDto.of(
+    public AdminAccountDto toDto() {
+        return AdminAccountDto.of(
                 username,
                 password,
                 authorities.stream()
@@ -83,4 +81,4 @@ public record BoardAdminPrincipal(
     @Override public Map<String, Object> getAttributes() { return oAuth2Attributes; }
     @Override public String getName() { return username; }
 
- }
+}
